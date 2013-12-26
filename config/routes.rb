@@ -1,4 +1,11 @@
 CCTVViewer::Application.routes.draw do
+
+  root 'cctv#index'
+
+  get '/traffic' => 'traffic_event#index'
+
+  get '/cctv/:cctv_name' => 'cctv#cctv_url'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

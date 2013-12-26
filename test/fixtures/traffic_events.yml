@@ -1,0 +1,81 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: MyString
+  event_state: MyString
+  event_class: MyString
+  event_type: MyString
+  report_org_id: MyString
+  facility_name: MyString
+  direction: MyString
+  article_code: MyString
+  from_loc_point: MyString
+  to_loc_point: MyString
+  create_time: 2013-12-25 20:56:16
+  last_update: 2013-12-25 20:56:16
+  event_description: MyString
+  city: MyString
+  county: MyString
+  state: MyString
+  est_duration: 1
+  latitude: 1.5
+  longitude: 1.5
+  to_lat: 1.5
+  to_long: 1.5
+  lanes_affected: 1
+  lane_status: MyString
+  total_lanes: 1
+  lane_description: MyString
+  lane_detail: MyString
+  update_number: 1
+  respond_org_id: MyString
+  pavement_condition: MyString
+  weather_condition: MyString
+  start_date: 2013-12-25 20:56:16
+  end_date: 2013-12-25 20:56:16
+  event_other_desc: MyString
+  from_mile_marker: MyString
+  local_only: false
+  construction_type: MyString
+  confirmation_code: MyString
+  closure_type: 1
+
+two:
+  event_id: MyString
+  event_state: MyString
+  event_class: MyString
+  event_type: MyString
+  report_org_id: MyString
+  facility_name: MyString
+  direction: MyString
+  article_code: MyString
+  from_loc_point: MyString
+  to_loc_point: MyString
+  create_time: 2013-12-25 20:56:16
+  last_update: 2013-12-25 20:56:16
+  event_description: MyString
+  city: MyString
+  county: MyString
+  state: MyString
+  est_duration: 1
+  latitude: 1.5
+  longitude: 1.5
+  to_lat: 1.5
+  to_long: 1.5
+  lanes_affected: 1
+  lane_status: MyString
+  total_lanes: 1
+  lane_description: MyString
+  lane_detail: MyString
+  update_number: 1
+  respond_org_id: MyString
+  pavement_condition: MyString
+  weather_condition: MyString
+  start_date: 2013-12-25 20:56:16
+  end_date: 2013-12-25 20:56:16
+  event_other_desc: MyString
+  from_mile_marker: MyString
+  local_only: false
+  construction_type: MyString
+  confirmation_code: MyString
+  closure_type: 1

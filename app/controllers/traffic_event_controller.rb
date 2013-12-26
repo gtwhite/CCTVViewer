@@ -1,0 +1,2 @@
+class TrafficEventController < ApplicationController
+end

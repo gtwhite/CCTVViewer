@@ -1,0 +1,2 @@
+module TrafficEventHelper
+end
