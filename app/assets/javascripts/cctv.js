@@ -1,5 +1,5 @@
-var markers = [];
 var isMousedOut = false;
+var intervalId;
 function initialize_cctv_map() {
   if(document.contains(document.getElementById("cctv_map_canvas"))) {
     var mapOptions = {
@@ -21,29 +21,37 @@ function initialize_cctv_map() {
       google.maps.event.addListener(marker, 
          	'mouseover',
 		function() {
-		  marker = this;
-		  marker['infowindow'] = new google.maps.InfoWindow();
 		  isMousedOut = false;
-		  ajax_url = '/cctv/' + marker.title;
-		  $.getJSON(ajax_url, null, function(json) {
-		    marker['infowindow'].setContent("<div><img src=" + json.cctv_url + "#" + new Date().getTime() + "></img></div>");
-		    if(!isMousedOut) { 
-		      marker['infowindow'].open(map, marker);
-		    }
-		  });
-		});
+		  this['infowindow'] = new google.maps.InfoWindow();
+		  setCCTVURL(this);   
+		  if(!isMousedOut) { 
+		    this['infowindow'].open(map, this);
+		    marker = this;
+		    intervalId = setInterval(function() {
+		      setCCTVURL(marker);
+		    }, 10000);
+		  }
+	        });
 
       google.maps.event.addListener(marker,
 	        'mouseout',
 	         function() {
 		   isMousedOut = true;
 		   this['infowindow'].close(map, marker);
+		   clearInterval(intervalId);
 		 });
     }
   }
 }
 google.maps.event.addDomListener(window, 'load', initialize_cctv_map);
 
-function filterMarkersBy(eventType) {
-  
-};
+function setCCTVURL(marker) {
+ ajax_url = '/cctv/' + marker.title;
+ $.getJSON(ajax_url, null, function(json) {
+   setMarkerContent(marker, json.cctv_url);  
+ });
+}
+
+function setMarkerContent(marker, imageURL) {
+  marker['infowindow'].setContent("<div><img src=" + imageURL + "#" + new Date().getTime() + "></img></div>");
+}
