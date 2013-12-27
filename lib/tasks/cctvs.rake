@@ -22,6 +22,7 @@ task :refresh_cctvs_urls => :environment do
     cctv_name = cctv.xpath("CCTV_Name").inner_text
     cctv_url = cctv.xpath("URL").inner_text
     cctv_model = Cctv.find_by(name: cctv_name)
+    Rails.logger.debug("Updating CCTV #{cctv_name} with url: #{cctv_url}") 
     Cctv.update(cctv_model.id, url: cctv_url) 
   end
 end
