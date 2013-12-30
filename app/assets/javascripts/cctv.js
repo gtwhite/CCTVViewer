@@ -46,8 +46,9 @@ function initialize_cctv_map() {
 google.maps.event.addDomListener(window, 'load', initialize_cctv_map);
 
 function setCCTVURL(marker) {
- ajax_url = '/cctv/' + marker.title;
- $.getJSON(ajax_url, null, function(json) {
+ ajaxParameter = encodeURIComponent(marker.title);
+ ajaxUrl = '/cctv/' + ajaxParameter;
+ $.getJSON(ajaxUrl, null, function(json) {
    setMarkerContent(marker, json.cctv_url);  
  });
 }
