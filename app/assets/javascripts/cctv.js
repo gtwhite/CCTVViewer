@@ -1,5 +1,6 @@
 var isMousedOut = false;
 var intervalId;
+var currentCCTVURL;
 function initialize_cctv_map() {
   if(document.contains(document.getElementById("cctv_map_canvas"))) {
     var mapOptions = {
@@ -37,6 +38,7 @@ function initialize_cctv_map() {
 	        'mouseout',
 	         function() {
 		   isMousedOut = true;
+                   currentCCTVURL = null;		   
 		   this['infowindow'].close(map, marker);
 		   clearInterval(intervalId);
 		 });
@@ -46,11 +48,15 @@ function initialize_cctv_map() {
 google.maps.event.addDomListener(window, 'load', initialize_cctv_map);
 
 function setCCTVURL(marker) {
- ajaxParameter = encodeURIComponent(marker.title);
- ajaxUrl = '/cctv/' + ajaxParameter;
- $.getJSON(ajaxUrl, null, function(json) {
-   setMarkerContent(marker, json.cctv_url);  
- });
+  ajaxParameter = encodeURIComponent(marker.title);
+  if(currentCCTVURL === null) {
+    ajaxUrl = '/cctv/' + ajaxParameter;
+    $.getJSON(ajaxUrl, null, function(json) {
+      setMarkerContent(marker, json.cctv_url);  
+    });
+  }else {
+    setMarkerContent(marker, currentCCTVURL);
+  }
 }
 
 function setMarkerContent(marker, imageURL) {

@@ -1,0 +1,8 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-map btn" href="<%= root_path %>">CCTV Map</a>  
+  </div>
+</nav>  
+
+<%= content_tag "div", id: "traffic_map_canvas", class: "map_canvas", data: {traffic_eevents: Traffic.get_traffic_events} do %>
+<% end %>
